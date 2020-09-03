@@ -1,0 +1,45 @@
+$buttons: (
+  primaryButton: #007bff,
+  secondaryButton: #6c757d,
+  teritiaryButton: #28a745
+);
+
+$btnSizes: (
+  btn-lg: 15px 20px,
+  btn-medium: 10px 15px,
+  btn-small: 5px 10px
+);
+
+@mixin base-btn {
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    color: #fff;
+}
+
+%btn_extend {
+    box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,0.3);
+  
+    &:hover { border: 1px solid rgba(0,0,0,0.5);}
+  }
+
+.btn{
+
+    @include base-btn();
+    @extend %btn_extend;
+
+   }
+
+@each $name, $colors in $buttons {
+    .#{$name} {
+        color : $colors;
+    }
+}
+
+@each $tag, $size in $btnSizes {
+    .#{$tag} {
+        padding : $size;
+    }
+}
+
